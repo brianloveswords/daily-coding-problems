@@ -2,8 +2,10 @@
     "name": "PureScript",
     "build": {
         "dockerfile": "Dockerfile",
-        // Update 'VARIANT' to pick a Node version: 10, 12, 14
-        "args": { "VARIANT": "14" }
+        "args": {
+            "NODE_VERSION": "14",
+            "PURESCRIPT_VERSION": "0.13.8"
+        }
     },
 
     // Set *default* container specific settings.json values on container create.

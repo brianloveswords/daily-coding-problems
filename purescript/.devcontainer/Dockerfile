@@ -1,13 +1,16 @@
 # [Choice] Node.js version: 14, 12, 10
-ARG VARIANT=14
-FROM mcr.microsoft.com/vscode/devcontainers/typescript-node:${VARIANT}
+ARG NODE_VERSION=14
+
+FROM mcr.microsoft.com/vscode/devcontainers/typescript-node:${NODE_VERSION}
+ARG PURESCRIPT_VERSION=0.13.8
+ENV PURESCRIPT_VERSION=$PURESCRIPT_VERSION
 
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && apt-get -y install --no-install-recommends \
     ripgrep \
     libtinfo5
 
-RUN curl -LO https://github.com/purescript/purescript/releases/download/v0.13.8/linux64.tar.gz \
+RUN curl -LO https://github.com/purescript/purescript/releases/download/v${PURESCRIPT_VERSION}/linux64.tar.gz \
     && tar -xzf linux64.tar.gz \
     && mv purescript/purs /usr/local/bin/purs \
     && rm -rf linux64.tar.gz purescript
