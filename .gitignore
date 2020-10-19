@@ -2,3 +2,6 @@ __pycache__
 build
 node_modules
 rust/**/target
+.metals
+*.class
+scala/**/target
