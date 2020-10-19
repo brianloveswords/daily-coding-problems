@@ -2,13 +2,22 @@
 
 Roll the dice, get a language and a problem.
 
-## Setup
+## Prerequisites
 
-This repo is optimized for VS Code using [Development Containers](https://code.visualstudio.com/docs/remote/containers).
+- Docker
+- VS Code
+
+This uses [Development Containers](https://code.visualstudio.com/docs/remote/containers) to isolate each language.
 
 ## Usage
 
-- Run `bin/choose`
+- Run `bin/roll`
+  - If you don't have python3 and really don't want to install it:
+
+    ```shell
+    docker run --rm -v ${PWD}:/dcp brianloveswords/dcp-roll
+    ```
+
 - Do `code <language>`. VS Code will prompt to re-open in a container.
 - Write & test the solution.
   - It probably makes sense to create a new directory for the problem and `code <directory>` to get a container workspace where the root is specific to that solution.
