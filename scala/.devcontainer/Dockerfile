@@ -21,8 +21,6 @@ RUN curl -Lo cs https://git.io/coursier-cli-linux \
     && ./cs setup -y \
     && rm cs
 
-RUN
-
 ENV PATH $PATH:/root/.local/share/coursier/bin
 
 # [Optional] Uncomment this section to install additional OS packages.
