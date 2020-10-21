@@ -24,7 +24,7 @@ func PerfectNumber(n int) int {
 			return current
 		}
 		if current == nextPower {
-			logger.Printf("debug: passed %d\n", nextPower)
+			logger.Printf("passed %d\n", nextPower)
 			nextPower *= 10
 		}
 		current++

@@ -1,4 +1,4 @@
 fn main() {
-    let msg = "Hello World!";
+    let msg: &str = "Hello World!";
     println!("{}", msg);
 }
