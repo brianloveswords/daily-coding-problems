@@ -5,3 +5,5 @@ rust/**/target
 .metals
 *.class
 scala/**/target
+.DS_Store
+*.csv

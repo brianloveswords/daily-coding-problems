@@ -1,4 +1,6 @@
-fn perfect_number(n: usize) -> usize {
+use std::env;
+
+fn perfect_number(n: usize, command: Command) -> usize {
     if n <= 0 || n > 59271 {
         panic!("valid range for n is [1, 59271] got {}", n)
     }
@@ -6,8 +8,14 @@ fn perfect_number(n: usize) -> usize {
     let mut current = 19;
     let mut next_power = 100;
 
+    let handle = match command {
+        Command::Graph => |i: usize, v: usize| println!("{},{}", i, v),
+        Command::None => |_i: usize, _v: usize| (),
+    };
+
     loop {
         if is_perfect(current) {
+            handle(i, current);
             i += 1
         }
         if i == n {
@@ -35,6 +43,35 @@ fn is_perfect(n: usize) -> bool {
     }
 }
 
+#[derive(Debug)]
+enum Command {
+    Graph,
+    None,
+}
+
 fn main() {
-    eprintln!("{}", perfect_number(59271));
+    let args: Vec<String> = env::args().skip(1).collect();
+
+    eprintln!("args {:?}", args);
+
+    let n = match args[0].parse::<usize>() {
+        Ok(n) => n,
+        Err(err) => panic!(err),
+    };
+
+    let command = match args
+        .get(1)
+        .map(|x| x.to_owned())
+        .map(|x| x.to_ascii_lowercase())
+        .unwrap_or("none".to_owned())
+        .as_ref()
+    {
+        "graph" => Command::Graph,
+        "none" => Command::None,
+        _ => panic!("expected `graph` or `none`"),
+    };
+
+    eprintln!("command {:?}", command);
+
+    eprintln!("{}", perfect_number(n, command));
 }
