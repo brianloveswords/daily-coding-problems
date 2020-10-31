@@ -2,6 +2,7 @@ __pycache__
 build
 node_modules
 rust/**/target
+.bloop
 .metals
 *.class
 scala/**/target
